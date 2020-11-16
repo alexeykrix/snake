@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  background: #121212;
+  font-family: Nunito, sans-serif;
+}
+
+#app {
+  margin: 20px auto;
+  width: fit-content;
+}
+
+canvas {
+  border: 5px solid #2980b9;
+}
+
+.container {
+  margin: 10px auto;
+  width: auto;
+}
+.container span {
+  display: block;
+  width: auto;
+  text-align: left;
+}
+.container input[type="number"] {
+  width: 40px;
+}
+
+.controls {
+  position: relative;
+  position: fixed;
+  bottom: 0;
+  user-select: none;
+  width: auto;
+  margin: 0 10px 10px;
+  color: bisque;
+}
+.controls span {
+  margin: 0;
+  padding: 0;
+  height: 20px;
+}
+.controls input {
+  margin: 0 5px 0;
+  padding: 0;
+  height: 20px;
+}
+
+.btn {
+  position: absolute;
+  right: -40px;
+  display: inline-block;
+  cursor: pointer;
+  margin: 5px 5px;
+  width: 20px;
+  height:20px;
+}
+.btn img {
+  width: 100%;
+}
+
+.arrows {
+  display: none;
+  width: 150px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  padding-top: 50px;
+  position: relative;
+}
+.controllerFace {
+  top: 0;
+  width: 150px;
+  height: 150px;
+  z-index: 123;
+  position: absolute;
+}
+
+@media (max-width: 768px) {
+  .arrows {
+    display: flex;
+  }
+}
+
+.btnArros {
+  text-align: center;
+  line-height: 50px;
+  font-weight: 700;
+  border: none;
+  width: 50px;
+  height: 50px;
+  background: #1d1d1d;
+  color: aliceblue;
+}
+
+.btnArros:first-child {
+  position: absolute;
+  top: 0px;
+  left: 50px;
+}
+.btnArros:nth-child(3) {
+  position: absolute;
+  top: 100px;
+  left: 50px;
+}
+.btnArros:nth-child(4) {
+  position: absolute;
+  top: 50px;
+  left: 100px;
+}
