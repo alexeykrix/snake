@@ -1,2 +1,1 @@
-# snake
-snake on js
+# https://alexeykrix.github.io/snake/
