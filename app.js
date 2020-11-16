@@ -14,6 +14,7 @@ cellRange[1].value = cellRange[0].value = localStorage.getItem('cellSize') || 10
 c.fillStyle = '#eeeeee'
 c.strokeStyle = '#000'
 c.lineWidth = '1'
+let score = 5
 
 let cellSize = localStorage.getItem('cellSize') || 10
 let cellsCount = canvas.width / cellSize
@@ -59,6 +60,10 @@ const renderCells = () => {
   c.rect(0, 0, canvas.width, canvas.width)
   c.fill()
   c.closePath()
+  c.fillStyle = '#242424'
+  c.font = '90px "Roboto Mono"'
+  c.textAlign = 'center';
+  c.fillText(score, canvas.width/2, canvas.width/2+20)
   renderCell(food.x, food.y, 0)
   gameData.forEach((el, id) => {
     renderCell(el.x, el.y, el.state, id)
@@ -186,6 +191,7 @@ const snakeMoving = () => {
 
 const gameRun = () => {
   snakeMoving()
+  score = gameData.length
 }
 
 let timeout = false
