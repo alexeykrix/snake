@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -87,6 +89,7 @@ canvas {
 }
 
 .btnArros {
+  color: #242424;
   text-align: center;
   line-height: 50px;
   font-weight: 700;
