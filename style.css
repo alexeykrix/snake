@@ -20,6 +20,11 @@ canvas {
   border: 5px solid #2980b9;
 }
 
+.stats {
+  text-align: right;
+  color: #ededed;
+}
+
 .container {
   margin: 10px auto;
   width: auto;
@@ -34,8 +39,8 @@ canvas {
 }
 
 .controls {
-  position: relative;
   position: fixed;
+  display: flex;
   bottom: 0;
   user-select: none;
   width: auto;
@@ -54,11 +59,9 @@ canvas {
 }
 
 .btn {
-  position: absolute;
-  right: -40px;
   display: inline-block;
   cursor: pointer;
-  margin: 5px 5px;
+  margin: 0px 5px;
   width: 20px;
   height:20px;
 }
