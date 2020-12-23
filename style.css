@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -11,7 +9,7 @@
   font-family: Nunito, sans-serif;
 }
 
-#app {
+.view {
   margin: 20px auto;
   width: fit-content;
 }

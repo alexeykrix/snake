@@ -1,33 +1,56 @@
-const btnPause = document.querySelector('.pause')
-const btnReset = document.querySelector('.reset')
-const arrows = document.querySelector('.arrows')
-const range = document.querySelectorAll('.size')
-const canvas = document.querySelector('#canvas')
-const best = document.querySelector('.stats span')
-const c = canvas.getContext('2d')
-canvas.width = canvas.height = localStorage.getItem('width') || 500
-
-range[1].value = range[0].value = localStorage.getItem('width') || 500
-
 class Snake  {
-  constructor(canvas, c, best, btnPause, btnReset, range, arrows) {
-    this.canvas = canvas
-    this.c = c
-    this.score = 0
-    this.best = best
-    this.arrows = arrows
-    best.innerHTML = localStorage.getItem('bestSnake') || 0
+  constructor(selector='body', name='game-container') {
+    this.selector = selector
+    this.name = name
+    this.app = document.createElement('div')
+    this.template = `
+    <div class="view">
+      <h3 class="stats">best: <span>0</span></h3>
+      <canvas id="canvas" ></canvas>
+    </div>
+
+    <div class="arrows">
+      <button class="btnArros up">↑</button>
+      <button class="btnArros left">←</button>
+      <button class="btnArros down">↓</button>
+      <button class="btnArros right">→</button>
+      <div class="controllerFace"></div>
+    </div>
+
+    <div class="controls">
+      Area size:
+      <input type="range" step=10 class="size" min="200" max="1000" value="500">
+      <input type="number" step=10 class="size" min="200" max="1000" value="500">
+      <button class="btn pause">
+        <img src="https://www.flaticon.com/svg/static/icons/svg/748/748136.svg" alt="">
+      </button>
+      <button class="btn reset">
+        <img src="https://images.vexels.com/media/users/3/128639/isolated/preview/62da532313d78f789be64c06811f39f0-reset-icon-svg-by-vexels.png" alt="">
+      </button>
+    </div>
+    `
+    this.app.innerHTML = this.template
+    this.app.classList = this.name
+    this.btnPause = this.app.querySelector('.pause')
+    this.btnReset = this.app.querySelector('.reset')
+    this.arrows = this.app.querySelector('.arrows')
+    this.range = this.app.querySelectorAll('.size')
+    this.canvas = this.app.querySelector('#canvas')
+    this.canvas.width = this.canvas.height = this.width
+    this.range[1].value = this.range[0].value = this.width
+    this.best = this.app.querySelector('.stats span')
+    this.c = this.canvas.getContext('2d')
+    this.best.innerHTML = localStorage.getItem('bestSnake') || 0
     this.cellSize = localStorage.getItem('cellSize') || 10
     this.cellsCount = this.canvas.width / this.cellSize
-    this.gameData = []
-    this.directions = []
-    this.food
-    this.btnPause = btnPause
-    this.btnReset = btnReset
-    this.range = range
-    this.timeout = false
   }
-  
+  width = localStorage.getItem('width') || 500
+  score = 0
+  gameData = []
+  directions = []
+  food = null
+  timeout = false
+
   randomPos() {
     let rand = - 0.5 + Math.random() * this.cellsCount
     return Math.round(rand)
@@ -83,7 +106,6 @@ class Snake  {
     this.c.fill()
   
     this.renderCells()
-    this.setEvents()
   }
   selfEating(id) {
     this.gameData = this.gameData.slice(0, (id>5 ? id: 5 ))
@@ -317,8 +339,11 @@ class Snake  {
       this.keydownHandler(e)
     })
   }
+  start() {
+    document.querySelector(this.selector).appendChild(this.app)
+    this.setEvents()
+    this.init()
+  }
 }
 
-let game = new Snake(canvas, c, best, btnPause, btnReset, range, arrows)
-
-game.init()
+new Snake('body', 'snake').start()
